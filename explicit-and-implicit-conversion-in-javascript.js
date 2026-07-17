@@ -19,14 +19,28 @@ Use console.log() to clearly show the before-and-after type conversions.
 */
 
 
-let result = "5" - 2;
-console.log("The result is: " + result);
+// ---- Implicit Type Conversion ----
+// JavaScript automatically converts the number into a string here
+let itemCount = 3;
+let summary = "You ordered " + itemCount + " items";
+console.log(summary);        // "You ordered 3 items"
+console.log(typeof summary); // "string"
 
-let isValid = Boolean("false");
-if (isValid) {
-    console.log("This is valid!");
-}
+// Edge case: implicit conversion gone wrong with undefined
+let mystery = 10 + undefined;
+console.log(mystery);        // NaN
+console.log(typeof mystery); // "number" (NaN is still classified as type "number")
 
-let age = "25";
-let totalAge = age + 5;
-console.log("Total Age: " + totalAge);
+
+// ---- Explicit Type Conversion ----
+// We deliberately convert the type ourselves
+let rawInput = "100";
+let convertedInput = Number(rawInput);
+console.log(convertedInput);       // 100
+console.log(typeof convertedInput); // "number"
+
+// Edge case: explicit conversion with null
+let missingValue = null;
+let convertedMissing = Number(missingValue);
+console.log(convertedMissing);       // 0 (null explicitly converts to 0)
+console.log(typeof convertedMissing); // "number"
